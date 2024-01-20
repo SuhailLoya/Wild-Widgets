@@ -4,8 +4,11 @@ import random
 import pygame
 import screen_brightness_control as sbc
 
+
+
 class ImageGame:
     def __init__(self, master, parent):
+        #super().__init__()
         self.root = master
         self.parent = parent
         self.root.title("Image Game")
@@ -16,25 +19,25 @@ class ImageGame:
         self.selected_image = None
 
         pygame.init()
-
         # Declare PIL images globally
         self.images = [
-            Image.open("./Brightness/jumpscare1.jpg"),
-            Image.open("./Brightness/jumpscare2.jpg"),
-            Image.open("./Brightness/jumpscare3.jpg"),
-            Image.open("./Brightness/jumpscare4.jpg"),
-            Image.open("./Brightness/jumpscare5.jpg"),
-            Image.open("./Brightness/jumpscare6.jpg"),
-            Image.open("./Brightness/jumpscare7.jpg"),
-            Image.open("./Brightness/jumpscare8.jpg")
+            Image.open("jumpscare1.jpg"),
+            Image.open("jumpscare2.jpg"),
+            Image.open("jumpscare3.jpg"),
+            Image.open("jumpscare4.jpg"),
+            Image.open("jumpscare5.jpg"),
+            Image.open("jumpscare6.jpg"),
+            Image.open("jumpscare7.jpg"),
+            Image.open("jumpscare8.jpg")
         ]
 
         self.audio_files = [
-            pygame.mixer.Sound('./Brightness/scare1.mp3'),
-            pygame.mixer.Sound('./Brightness/scare2.mp3'),
-            pygame.mixer.Sound('./Brightness/scare4.mp3'),
-            pygame.mixer.Sound('./Brightness/scare5.mp3')
+            pygame.mixer.Sound('scare1.mp3'),
+            pygame.mixer.Sound('scare2.mp3'),
+            pygame.mixer.Sound('scare4.mp3'),
+            pygame.mixer.Sound('scare5.mp3')
         ]
+       
         
 
         sbc.fade_brightness(5)
@@ -48,18 +51,31 @@ class ImageGame:
         self.random_audio = random.choice(self.audio_files)
         self.random_audio.play()
 
-        self.image_label = tk.Label(self.root)
-        self.image_label.pack()
+        self.image_label = tk.Label(master=self.root, width=self.screen_width-100,height=self.screen_height-80)
+        self.tmp()
 
+        
         self.display_image()
         jumpscare_button = tk.Button(self.root, text="Jumpscare", command=self.display_image)
         jumpscare_button.pack()
         self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
         self.open_button.pack()
+    
+    def tmp(self):
+        self.image_label = tk.Label(image=self.mystery_image)
+        self.image_label.pack()
 
     def open_another_window(self):
         self.root.withdraw()
-        self.parent.deiconify()
+        if(self.parent is not None):
+            if(self.parent.s2 is not None):
+                self.parent.s2.destroy()
+            if(self.parent.s3 is not None):
+                self.parent.s3.destroy()
+            self.parent.destroy()
+        from app import open_main_menu
+        self.parent = open_main_menu(self.root)
+        self.parent.mainloop()
 
     def display_image(self):
         # Images array
@@ -70,8 +86,8 @@ class ImageGame:
         self.random_audio = random.choice(self.audio_files)
         self.random_audio.play()
 
-        new_image = ImageTk.PhotoImage(self.resized_image)
-        self.image_label.config()
+        new_image = ImageTk.PhotoImage(image=self.resized_image)
+        self.image_label.config(image=new_image)
         self.image_label.image = new_image
 
         # Create a list of brightness levels
@@ -96,7 +112,9 @@ def open_brightness_game(parent):
     root.protocol("WM_DELETE_WINDOW", nothing)
 
     game = ImageGame(root, parent)
+
    # game.initialize_window()
 
     return root
 
+open_brightness_game(None).mainloop()

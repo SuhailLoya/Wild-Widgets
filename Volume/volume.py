@@ -51,6 +51,7 @@ class PumpGame:
 
         self.open_button = tk.Button(self.master, text="Back", command=self.open_another_window)
         self.open_button.pack()
+        self.master.withdraw()
 
     def open_another_window(self):
         self.master.withdraw()

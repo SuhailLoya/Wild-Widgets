@@ -1,0 +1,3 @@
+
+game = ImageGame()
+game.run()
