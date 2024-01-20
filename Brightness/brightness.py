@@ -25,7 +25,7 @@ pil_image8 = Image.open("./Brightness/jumpscare8.jpg")
 audio_files = [
     pygame.mixer.Sound('./Brightness/scare1.mp3'),
     pygame.mixer.Sound('./Brightness/scare2.mp3'),
-    pygame.mixer.Sound('./Brightness/scare3.mp3'),
+    pygame.mixer.Sound('./Brightness/scare4.mp3'),
     pygame.mixer.Sound('./Brightness/scare5.mp3')
 ]
 
@@ -40,8 +40,10 @@ def initialize_window():
     resized_image = pil_image1.resize((screen_width-100, screen_height-80))
     mystery_image = ImageTk.PhotoImage(resized_image)
 
-
     selected_image = pil_image1
+
+    random_audio = random.choice(audio_files)
+    random_audio.play()
 
     image_label = tk.Label(root, image=mystery_image)
     image_label.pack()
@@ -110,9 +112,8 @@ root.title("Image Game")
 root.attributes('-fullscreen', True)
 root.config(cursor="arrow")  # Set the cursor to a standard arrow cursor
 
-
 initialize_window()
-
+display_image()
 # jumpscare_button = tk.Button(root, text="Jumpscare", command=jumpscare)
 normal_button = tk.Button(root, text="Change Brightness", command=display_image)
 score_label = tk.Label(root, text=f"Score: {score}")
