@@ -1,18 +1,36 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import random
+import pygame
 import screen_brightness_control as sbc
+
 
 # Global variables
 selected_image = None
 score = 0
 image_label = None
 
+pygame.init()
+
 # Declare PIL images globally
-pil_image1 = Image.open("./Brightness/cat.jpg")
-pil_image2 = Image.open("./Brightness/funny.jpg")
-pil_image3 = Image.open("./Brightness/monkey.jpg")
-sbc.fade_brightness(0)
+pil_image1 = Image.open("./Brightness/jumpscare1.jpg")
+pil_image2 = Image.open("./Brightness/jumpscare2.jpg")
+pil_image3 = Image.open("./Brightness/jumpscare3.jpg")
+pil_image4 = Image.open("./Brightness/jumpscare4.jpg")
+pil_image5 = Image.open("./Brightness/jumpscare5.jpg")
+pil_image6 = Image.open("./Brightness/jumpscare6.jpg")
+pil_image7 = Image.open("./Brightness/jumpscare7.jpg")
+pil_image8 = Image.open("./Brightness/jumpscare8.jpg")
+
+audio_files = [
+    pygame.mixer.Sound('./Brightness/scare1.mp3'),
+    pygame.mixer.Sound('./Brightness/scare2.mp3'),
+    pygame.mixer.Sound('./Brightness/scare3.mp3'),
+    pygame.mixer.Sound('./Brightness/scare5.mp3')
+]
+
+
+sbc.fade_brightness(5)
 
 def initialize_window():
     global image_label, selected_image
@@ -22,6 +40,7 @@ def initialize_window():
     resized_image = pil_image1.resize((screen_width-100, screen_height-80))
     mystery_image = ImageTk.PhotoImage(resized_image)
 
+
     selected_image = pil_image1
 
     image_label = tk.Label(root, image=mystery_image)
@@ -30,15 +49,20 @@ def initialize_window():
 
 
 
+
 def display_image():
     global selected_image
     #Images array
-    images = [pil_image1, pil_image2, pil_image3]
+    images = [pil_image1, pil_image2, pil_image3,pil_image4,pil_image5,pil_image6,pil_image7
+                ,pil_image8]
     selected_image = random.choice(images)
 
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     resized_image = selected_image.resize((screen_width-100, screen_height-80))
+
+    random_audio = random.choice(audio_files)
+    random_audio.play()
 
     new_image = ImageTk.PhotoImage(resized_image)
     image_label.config(image=new_image)
@@ -84,11 +108,13 @@ def show_popup():
 root = tk.Tk()
 root.title("Image Game")
 root.attributes('-fullscreen', True)
+root.config(cursor="arrow")  # Set the cursor to a standard arrow cursor
+
 
 initialize_window()
 
 # jumpscare_button = tk.Button(root, text="Jumpscare", command=jumpscare)
-normal_button = tk.Button(root, text="Next", command=display_image)
+normal_button = tk.Button(root, text="Change Brightness", command=display_image)
 score_label = tk.Label(root, text=f"Score: {score}")
 
 #jumpscare_button.pack()
