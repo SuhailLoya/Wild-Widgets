@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import random
 import pygame
 import screen_brightness_control as sbc
+from tkinter import ttk
 
 
 
@@ -12,7 +13,7 @@ class ImageGame:
         self.root = master
         self.parent = parent
         self.root.title("Image Game")
-        self.root.attributes('-fullscreen', True)
+        # self.root.attributes('-fullscreen', True)
         self.root.config(cursor="arrow")  # Set the cursor to a standard arrow cursor
 
         # Global variables
@@ -41,9 +42,9 @@ class ImageGame:
         
 
         sbc.fade_brightness(5)
-        self.screen_width = self.root.winfo_screenwidth()
-        self.screen_height = self.root.winfo_screenheight()
-        self.resized_image = self.images[0].resize((self.screen_width-100, self.screen_height-80))
+        # self.screen_width = self.root.winfo_screenwidth()
+        # self.screen_height = self.root.winfo_screenheight()
+        self.resized_image = self.images[0].resize((800, 600))
         self.mystery_image = ImageTk.PhotoImage(self.resized_image)
 
         self.selected_image = self.images[0]
@@ -51,28 +52,60 @@ class ImageGame:
         self.random_audio = random.choice(self.audio_files)
         self.random_audio.play()
 
-        self.image_label = tk.Label(master=self.root, width=self.screen_width-100,height=self.screen_height-80)
+        self.image_label = tk.Label(master=self.root, width=800,height=600)
         self.tmp()
 
         
         self.display_image()
-        jumpscare_button = tk.Button(self.root, text="Jumpscare", command=self.display_image)
-        jumpscare_button.pack()
-        self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
-        self.open_button.pack()
+        # jumpscare_button = tk.Button(self.root, text="Jumpscare", command=self.display_image)
+        # jumpscare_button.pack()
+        # self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
+        # self.open_button.pack()
+
+        # Themed styles
+        # style = ttk.Style()
+        # style.configure('TButton', font=('Helvetica', 12),  fg="blue",padding=(10, 5), foreground='white', background='#4CAF50')
+        # # style.configure('TButton2', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
+
+        # # Button to go back
+        # self.open_button = ttk.Button(self.root, text="Back",  style='TButton', command=self.open_another_window)
+        # self.open_button.pack(pady=20)
+
+        # jumpscare_button = ttk.Button(self.root, text="Jumpscare",style='TButton', command=self.display_image)
+        # jumpscare_button.pack(pady=20)
+
+        # style = ttk.Style()
+        # style.configure('TButton', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
+
+
+        style = ttk.Style()
+        style.configure('TButton', font=('Helvetica', 10), padding=(7, 5), foreground='black', background='white', bordercolor='black')
+
+        self.open_button = ttk.Button(self.root, text="Back", style='TButton', command=self.open_another_window)
+        self.open_button.pack(pady=20)
+
+        jumpscare_button = ttk.Button(self.root, text="Jumpscare", style='TButton', command=self.display_image)
+        jumpscare_button.pack(pady=20)
+
+        # Create a custom style for the "Jumpscare" button with a different background color
+        # style.map('Special.TButton',
+        #           foreground=[('active', 'blue'), ('disabled', 'blue')],
+        #           background=[('active', 'blue'), ('disabled', 'blue')])
+
     
     def tmp(self):
         self.image_label = tk.Label(image=self.mystery_image)
         self.image_label.pack()
 
     def open_another_window(self):
-        self.root.withdraw()
+        
         if(self.parent is not None):
             if(self.parent.s2 is not None):
                 self.parent.s2.destroy()
             if(self.parent.s3 is not None):
                 self.parent.s3.destroy()
             self.parent.destroy()
+        self.root.withdraw()
         from app import open_main_menu
         self.parent = open_main_menu(self.root)
         self.parent.mainloop()
@@ -81,7 +114,7 @@ class ImageGame:
         # Images array
         print("a")
         self.selected_image = random.choice(self.images)
-        self.resized_image = self.selected_image.resize((self.screen_width-100, self.screen_height-80))
+        self.resized_image = self.selected_image.resize((800, 600))
 
         self.random_audio = random.choice(self.audio_files)
         self.random_audio.play()

@@ -1,9 +1,9 @@
-
-
 import tkinter as tk
 import random
 import time
 import keyboard
+from tkinter import ttk
+
 
 class KeyBoardGame:
     def __init__(self, root, parent,parentObject):
@@ -16,11 +16,42 @@ class KeyBoardGame:
         # self.paragraph = "Ipsum"
         self.current_index = 0
 
-        self.label = tk.Label(root, text=self.get_display_text(), font=("Helvetica", 14))
-        self.label.pack(pady=10)
+        # self.label = tk.Label(root, text=self.get_display_text(), font=("Helvetica", 14))
+        # self.label.pack(pady=10)
 
-        self.user_input = tk.Entry(root, font=("Helvetica", 14), width=5)
-        self.user_input.pack(pady=5)
+        # self.user_input = tk.Entry(root, font=("Helvetica", 14), width=5)
+        # self.user_input.pack(pady=5)
+
+        # Padding for the entire GUI
+        self.padding_x = 20
+        self.padding_y = 20
+
+        # Center the window
+        self.root_width = 800 + 2 * self.padding_x
+        self.root_height = 600 + 2 * self.padding_y
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
+        x_position = (screen_width - self.root_width) // 2
+        y_position = (screen_height - self.root_height) // 2
+        self.root.geometry(f"{self.root_width}x{self.root_height}+{x_position}+{y_position}")
+
+        # Themed styles
+        style = ttk.Style()
+        style.configure('TLabel', font=('Helvetica', 14), padding=(10, 5))
+        style.configure('TEntry', font=('Helvetica', 14), padding=(10, 5))
+        style.configure('TButton', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
+
+        # Create and pack the label
+        self.label = ttk.Label(root, text="Enter something:", style='TLabel')
+        self.label.pack(pady=20)
+
+        # Create and pack the entry widget
+        self.user_input = ttk.Entry(root, style='TEntry', width=30)
+        self.user_input.pack(pady=10)
+
+        # Button to go back
+        self.open_button = ttk.Button(root, text="Back", style='TButton', command=self.open_another_window)
+        self.open_button.pack(pady=20)
 
         self.time_limit = 90  # Set time limit in seconds
         self.start_time = time.time()
@@ -28,8 +59,8 @@ class KeyBoardGame:
         self.root.bind('<Key>', self.check_key_press)
 
         self.update()
-        self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
-        self.open_button.pack()
+        # self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
+        # self.open_button.pack()
 
     def open_another_window(self):
         self.root.withdraw()
@@ -83,9 +114,22 @@ class KeyBoardGame:
 def open_keyboard_game(parent, parentObject):
     root = tk.Tk()
 
+    # Padding for the entire GUI
+    padding_x = 20
+    padding_y = 20
+    root_width = 800 + 2 * padding_x
+    root_height = 600 + 2 * padding_y
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+    x_position = (screen_width - root_width) // 2
+    y_position = (screen_height - root_height) // 2
+    root.geometry(f"{root_width}x{root_height}+{x_position}+{y_position}")
+
+
+
     def nothing(): return
     root.protocol("WM_DELETE_WINDOW", nothing)
-    #root.overrideredirect(True)
+    # root.overrideredirect(True)
     #root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
     game = KeyBoardGame(root, parent,parentObject)
 

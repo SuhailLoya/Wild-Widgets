@@ -1,5 +1,6 @@
 import tkinter as tk
 import platform
+from tkinter import ttk
 
 
 class PumpGame:
@@ -33,6 +34,7 @@ class PumpGame:
         self.canvas.tag_bind(self.handle_horizontal, '<B1-Motion>', lambda event: self.move_handle(event))
         self.canvas.bind("<ButtonRelease-1>", self.stop_pumping)
         self.canvas.tag_bind(self.handle_horizontal, '<Button-1>', self.start_pumping)
+        self.canvas.config(bg="white")
 
         # Pumping variables
         self.pumping = False
@@ -49,8 +51,15 @@ class PumpGame:
         self.master.after(100, self.update_function100) #100ms
         self.master.after(2000, self.update_function2000) # 2000ms
 
-        self.open_button = tk.Button(self.master, text="Back", command=self.open_another_window)
-        self.open_button.pack()
+        # self.open_button = tk.Button(self.master, text="Back", command=self.open_another_window)
+        # self.open_button.pack()
+
+        style = ttk.Style()
+        style.configure('TButton', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
+
+        self.open_button = ttk.Button(master, text="Back", style='TButton', command=self.open_another_window)
+        self.open_button.pack(pady=20)
+
         self.master.withdraw()
 
     def open_another_window(self):
