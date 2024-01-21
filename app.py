@@ -175,16 +175,16 @@ class AnnoyingApp:
 
     def create_buttons(self):
         # if platform.system() == 'Windows':
-        Top_Left = tk.Button(self.root, bg='#ff0000', command=self.top_left_redirect, text="Mouse Control")
+        Top_Left = tk.Button(self.root, bg='#ff0000', command=self.top_left_redirect, text="Mouse Control", font="Serif 13 bold")
         Top_Left.place(x=0, y=0, width=self.WIDTH/2, height=self.HEIGHT/2)
 
-        Top_Right = tk.Button(self.root, bg='#3cb371', command=self.top_right_redirect, text="Keyboard Control")
+        Top_Right = tk.Button(self.root, bg='#3cb371', command=self.top_right_redirect, text="Keyboard Control", font="Serif 13 bold")
         Top_Right.place(x=self.WIDTH/2, y=0, width=self.WIDTH/2, height=self.HEIGHT/2)
 
-        Bottom_Left = tk.Button(self.root, bg='#eee7da', command=self.bottom_left_redirect, text="Volume Control")
+        Bottom_Left = tk.Button(self.root, bg='#eee7da', command=self.bottom_left_redirect, text="Volume Control", font="Serif 13 bold")
         Bottom_Left.place(x=0, y=self.HEIGHT/2, width=self.WIDTH/2, height=self.HEIGHT/2)
 
-        Bottom_Right = tk.Button(self.root, bg='#fad7a0', command=self.bottom_right_redirect, text="Brightness Control")
+        Bottom_Right = tk.Button(self.root, bg='#fad7a0', command=self.bottom_right_redirect, text="Brightness Control", font="Serif 13 bold")
         Bottom_Right.place(x=self.WIDTH/2, y=self.HEIGHT/2, width=self.WIDTH/2, height=self.HEIGHT/2)
         # else:
         #     Top_Left = Button(self.root, bg='#ff0000', command=self.top_left_redirect, text="Top Left")
