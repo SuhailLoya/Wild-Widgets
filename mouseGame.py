@@ -11,8 +11,6 @@ class CircleGame:
         self.parentObject = parentObject
         self.root.title("Circle Game")
 
-        # screen_width = root.winfo_screenwidth()-200
-        # screen_height = root.winfo_screenheight()-200
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight() -300
         window_width = self.root.winfo_screenwidth() # Set your desired window width

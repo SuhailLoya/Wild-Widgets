@@ -160,5 +160,4 @@ def open_volume_game(parent):
     return root
 
 
-## comment
-#open_mouse_game()
+# open_volume_game(None).mainloop()

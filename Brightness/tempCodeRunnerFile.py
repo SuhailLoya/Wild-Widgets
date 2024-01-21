@@ -1,3 +1,0 @@
-
-game = ImageGame()
-game.run()

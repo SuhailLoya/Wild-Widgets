@@ -5,7 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30cd691e-5cd9-4ae3-aac3-9d8af664140e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/brightness.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/jumpscare8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/scare1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/scare2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/scare3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/scare4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/scare5.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brightness/tempCodeRunnerFile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Keyboard/KeyboardGame Main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Keyboard/Random Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/KeyboardGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/KeyboardGame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Volume/volume.py" beforeDir="false" afterPath="$PROJECT_DIR$/Volume/volume.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brightness.py" beforeDir="false" afterPath="$PROJECT_DIR$/brightness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mouseGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/mouseGame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +63,7 @@
     "last_opened_file_path": "C:/Users/Kumar Lenovo PC/Desktop/Kumar/NUS/Hackathons/Hack n Roll/Wild-Widgets"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.brightness">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Wild-Widgets" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -56,6 +78,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="brightness" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Wild-Widgets" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/brightness.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -106,13 +149,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="volume" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Wild-Widgets" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Volume" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Volume/volume.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.app" />
+      <item itemvalue="Python.brightness" />
       <item itemvalue="Python.mouseGame" />
       <item itemvalue="Python.user_interface" />
+      <item itemvalue="Python.volume" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.brightness" />
+        <item itemvalue="Python.volume" />
         <item itemvalue="Python.mouseGame" />
         <item itemvalue="Python.user_interface" />
       </list>

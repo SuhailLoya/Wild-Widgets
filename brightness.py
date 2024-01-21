@@ -13,7 +13,6 @@ class ImageGame:
         self.root = master
         self.parent = parent
         self.root.title("Image Game")
-        # self.root.attributes('-fullscreen', True)
         self.root.config(cursor="arrow")  # Set the cursor to a standard arrow cursor
 
         # Global variables
@@ -42,8 +41,6 @@ class ImageGame:
         
 
         sbc.fade_brightness(5)
-        # self.screen_width = self.root.winfo_screenwidth()
-        # self.screen_height = self.root.winfo_screenheight()
         self.resized_image = self.images[0].resize((800, 600))
         self.mystery_image = ImageTk.PhotoImage(self.resized_image)
 
@@ -57,22 +54,6 @@ class ImageGame:
 
         
         self.display_image()
-        # jumpscare_button = tk.Button(self.root, text="Jumpscare", command=self.display_image)
-        # jumpscare_button.pack()
-        # self.open_button = tk.Button(self.root, text="Back", command=self.open_another_window)
-        # self.open_button.pack()
-
-        # Themed styles
-        # style = ttk.Style()
-        # style.configure('TButton', font=('Helvetica', 12),  fg="blue",padding=(10, 5), foreground='white', background='#4CAF50')
-        # # style.configure('TButton2', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
-
-        # # Button to go back
-        # self.open_button = ttk.Button(self.root, text="Back",  style='TButton', command=self.open_another_window)
-        # self.open_button.pack(pady=20)
-
-        # jumpscare_button = ttk.Button(self.root, text="Jumpscare",style='TButton', command=self.display_image)
-        # jumpscare_button.pack(pady=20)
 
         # style = ttk.Style()
         # style.configure('TButton', font=('Helvetica', 12), padding=(10, 5), foreground='white', background='#4CAF50')
@@ -146,7 +127,6 @@ def open_brightness_game(parent):
 
     game = ImageGame(root, parent)
 
-   # game.initialize_window()
 
     return root
 

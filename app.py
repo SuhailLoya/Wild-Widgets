@@ -1,8 +1,6 @@
 import tkinter as tk
-import platform
 import os
 import keyboard
-import time
 import random
 from threading import Thread
 import pyautogui as pg
@@ -31,7 +29,7 @@ class AnnoyingApp:
 
         self.consecutive_presses_required = random.randint(2, 6)
         
-        self.move_cursor_randomly()
+        self.root.after(200,self.move_cursor_randomly)
         self.start_keyboard_control()
         self.root.after(20000*3*60, self.update)
         print("asfuafssa")
@@ -61,22 +59,13 @@ class AnnoyingApp:
         self.root.after(20000*3*60, self.update)
 
     def start_keyboard_control(self):
-        # Disable the button while the thread is running
-
-        # Create a thread and target it to the control_keyboard function
         thread = Thread(target=self.control_keyboard)
-        # Set the thread to daemon mode so that it doesn't block the program exit
         thread.daemon = True
-        # Start the thread
         thread.start()
-        
-        #write code to start and stop the thread based on a condition
 
-        # Check the thread status periodically and update the button when it's done
         self.root.after(100, lambda: self.check_thread(thread))
 
     def check_thread(self, thread):
-        # Check if the thread is still alive
         if thread.is_alive():
             self.root.after(100, lambda: self.check_thread(thread))
 
@@ -214,4 +203,4 @@ def open_main_menu(s4):
     #root.mainloop()
     return root
 
-open_main_menu(None).mainloop()
+#open_main_menu(None).mainloop()

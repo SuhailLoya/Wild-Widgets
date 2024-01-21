@@ -12,17 +12,10 @@ class KeyBoardGame:
         self.parentObject = parentObject
         self.root.title("Keyboard Game")
 
-        self.paragraph = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        self.paragraph = "Lorem ipsum dolor sit amet."
         # self.paragraph = "Ipsum"
         self.current_index = 0
 
-        # self.label = tk.Label(root, text=self.get_display_text(), font=("Helvetica", 14))
-        # self.label.pack(pady=10)
-
-        # self.user_input = tk.Entry(root, font=("Helvetica", 14), width=5)
-        # self.user_input.pack(pady=5)
-
-        # Padding for the entire GUI
         self.padding_x = 20
         self.padding_y = 20
 
@@ -99,7 +92,7 @@ class KeyBoardGame:
         self.root.after(2000, self.restart)
 
     def restart(self):
-        self.paragraph = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        self.paragraph = "Lorem ipsum dolor sit amet."
         # self.paragraph = "Ipsum"
         self.current_index = 0
         self.start_time = time.time()
@@ -129,8 +122,6 @@ def open_keyboard_game(parent, parentObject):
 
     def nothing(): return
     root.protocol("WM_DELETE_WINDOW", nothing)
-    # root.overrideredirect(True)
-    #root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
     game = KeyBoardGame(root, parent,parentObject)
 
     return root
