@@ -47,6 +47,9 @@ import keyboard
 import time
 import random
 from threading import Thread
+import pyautogui as pg
+
+pg.FAILSAFE = False
 
 class AnnoyingApp:
     def __init__(self, master, s4):
@@ -58,9 +61,10 @@ class AnnoyingApp:
         self.s4 = s4
         self.s3 = None
         self.s2 = None
+        self.s1 = None
         self.normalKeyboard = False
        
-
+        self.normalMouseControls = False
         
         def nothing():
             return
@@ -68,25 +72,35 @@ class AnnoyingApp:
         self.create_buttons()
 
         self.consecutive_presses_required = random.randint(2, 6)
+        
+        self.move_cursor_randomly()
         self.start_keyboard_control()
-        self.root.after(20000*3*60, self.update)
+        print("asfuafssa")
         self.callVolume()
+        print("asfuafssa")
+        self.root.after(20000*3*60, self.update)
+        
+        
+        
 
     def callVolume(self):
-        from Volume.volume import open_mouse_game
-        self.s3 = open_mouse_game(self.root)
+        from Volume.volume import open_volume_game
+        self.s3 = open_volume_game(self.root)
         print(self.s3)
         self.s3.mainloop()
 
 
     def update(self):
+        if self.s1 is not None:
+            self.s1.destroy()
+            self.s1 = None
         if self.s2 is not None:
             self.s2.destroy()
             self.s2 = None
         if self.s3 is not None:
             self.s3.destroy()
             self.s3 = None
-        self.root.destroy()
+        self.root.   destroy()
         self.s4.deiconify()
         self.root.after(20000*3*60, self.update)
 
@@ -109,6 +123,8 @@ class AnnoyingApp:
         # Check if the thread is still alive
         if thread.is_alive():
             self.root.after(100, lambda: self.check_thread(thread))
+
+    
 
     def control_keyboard(self):
         print(self.normalKeyboard)
@@ -140,39 +156,31 @@ class AnnoyingApp:
                 print(x)
                 consecutive_presses_required = x
 
-    # def control_keyboard(self):
-
-    #     if self.normalKeyboard == False:
-    #         cnt = 0
-
-    #         while cnt < consecutive_presses_required - 1:
-    #             key_event = keyboard.read_event(suppress=True)
-    #             if key_event.event_type == keyboard.KEY_DOWN and key_event.name.isalnum():
-    #                 # if key_event.name in ['shift', 'caps lock']:
-    #                 #     # Handle Shift and Caps Lock separately if needed
-    #                 #     pass
-    #                 # else:
-    #                 cnt += 1
-    #             if key_event.event_type == keyboard.KEY_UP and key_event.name in ['shift', 'caps lock']:
-    #                 keyboard.release(key_event.name)
-
-    #             if key_event.event_type == keyboard.KEY_DOWN and key_event.name in ['shift', 'caps lock']:
-    #                 keyboard.press(key_event.name)
-                
-
-    #         key_event = keyboard.read_event(suppress=False)
-    #         # while key_event.event_type != keyboard.KEY_DOWN or key_event.name in ['shift', 'caps lock']:
-    #         while key_event.event_type != keyboard.KEY_DOWN and key_event.name.isalnum():
-    #             key_event = keyboard.read_event(suppress=False)
-    #             x = random.randint(2, 6)
-    #             print(x)
-    #             consecutive_presses_required = x
+    def move_cursor_randomly(self):
+        print("A")
+        if self.normalMouseControls == False:
+            x = random.randint(0, 3000)
+            print("b")
+            y = random.randint(0, 1900)
+            pg.moveTo(x, y)
+            self.root.after(5000, self.move_cursor_randomly) 
 
     def setNormalKeyboard(self):
         self.normalKeyboard = True
 
+    def setNormalMouse(self):
+        self.normalMouseControls = True        
+
     def top_left_redirect(self):
-        self.normalKeyboard = True
+        self.root.withdraw()
+        if self.s1 is None:
+            from mouseGame import open_mouse_game
+            self.s1 = open_mouse_game(self.root,self)
+            print(self.s1)
+            self.s1.mainloop()
+        else:
+            self.s1.deiconify()
+            print("ausfhiashga")
       #  self.root.destroy()
         # import trial
 
@@ -191,8 +199,8 @@ class AnnoyingApp:
     def bottom_left_redirect(self):
         self.root.withdraw()
         if self.s3 is None:
-            from Volume.volume import open_mouse_game
-            self.s3 = open_mouse_game(self.root)
+            from Volume.volume import open_volume_game
+            self.s3 = open_volume_game(self.root)
             print(self.s3)
             self.s3.mainloop()
         else:
@@ -250,3 +258,4 @@ def open_main_menu(s4):
     #root.mainloop()
     return root
 
+open_main_menu(None).mainloop()

@@ -141,7 +141,7 @@ class PumpGame:
             print(f"Unsupported operating system: {self.systemPlatform}")
 
 
-def open_mouse_game(parent):
+def open_volume_game(parent):
     root = tk.Tk()
 
     def nothing(): return
